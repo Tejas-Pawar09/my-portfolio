@@ -1,927 +1,1453 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tejas Pawar | Premium Data Portfolio</title>
-    <meta name="description" content="Portfolio of Tejas Pawar - Data Analyst & Aspiring Data Scientist. Showcasing advanced analytics, business intelligence dashboards, and data solutions.">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js for real dashboard rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Render Blocking Anti-Flash Guard Architecture -->
-    <script>
-        // Refresh ya browser close hone ke baad bhi theme save rakhne ka algorithm
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tejas Pawar — Data Analyst</title>
+<meta name="description" content="Tejas Pawar — Data Analyst. Python, SQL, Power BI and Excel, applied to real reporting, dashboards and business insight.">
+<meta name="color-scheme" content="dark light">
 
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        accentCyan: '#06b6d4',
-                        accentBlue: '#3b82f6'
-                    }
-                }
-            }
-        }
-    </script>
-    <style type="text/css">
-        body {
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        /* Custom scrollbar tracking handles */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .dark ::-webkit-scrollbar-thumb { background: #1e293b; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #06b6d4;
-        }
-        
-        /* Premium Glassmorphism Overhauls - Optimized Framework */
-        .glass-panel {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        /* Light Mode Default */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
-        }
-        .glass-panel:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.04);
-        }
-        /* Dark Mode Overrides Explicitly Handled */
-        .dark .glass-panel {
-            background: rgba(15, 23, 42, 0.45) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            box-shadow: none !important;
-        }
-        .dark .glass-panel:hover {
-            border-color: rgba(6, 182, 212, 0.3) !important;
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.05) !important;
-        }
-        
-        /* Mouse glow backdrop tracker */
-        #mouse-glow {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.02) 0%, transparent 60%);
-        }
-        .dark #mouse-glow {
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.04) 0%, rgba(59, 130, 246, 0.01) 50%, transparent 100%);
-        }
-        
-        .typewriter-cursor::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        /* Grid backgrounds variables */
-        .matrix-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px);
-        }
-        .dark class .matrix-grid, .dark .matrix-grid {
-            background-image: linear-gradient(rgba(6, 182, 212, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.01) 1px, transparent 1px) !important;
-        }
-    </style>
+<!-- Fonts: display (Space Grotesk), body (Inter), data/utility (JetBrains Mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   1. RESET
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { background: none; border: none; cursor: pointer; }
+
+/* ==========================================================================
+   2. DESIGN TOKENS
+   Single source of truth for color, type and spacing. Dark is the default
+   voice of the page (developer-tool feel); light is a first-class override,
+   not an afterthought — every token is redefined, not just inverted.
+   ========================================================================== */
+:root{
+  /* color — dark (default) */
+  --bg: #0B0E11;
+  --surface: #12161B;
+  --surface-2: #181D24;
+  --border: rgba(255,255,255,0.09);
+  --border-strong: rgba(255,255,255,0.16);
+  --text: #E7E9EA;
+  --text-muted: #9AA3AB;
+  --accent: #E8A33D;        /* brass — instrument-panel accent, not the default cyan/terracotta */
+  --accent-text: #E8A33D;   /* accent when used as text/foreground, contrast-checked per theme */
+  --accent-soft: rgba(232,163,61,0.12);
+  --accent-2: #4E9C89;      /* ledger teal, secondary ink */
+  --accent-2-soft: rgba(78,156,137,0.14);
+  --on-accent: #14100A;
+  --danger: #E5674A;
+  --focus-ring: #6FCF97;
+
+  /* type */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  --step-h1: clamp(2.25rem, 1.55rem + 3vw, 4rem);
+  --step-h2: clamp(1.5rem, 1.25rem + 1.4vw, 2.15rem);
+  --step-h3: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  --step-lead: clamp(1.05rem, 0.98rem + 0.5vw, 1.2rem);
+  --step-body: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
+  --step-small: clamp(0.78rem, 0.76rem + 0.1vw, 0.85rem);
+
+  /* space */
+  --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-5: 1.5rem; --sp-6: 2rem; --sp-7: 3rem; --sp-8: 4.5rem; --sp-9: 7rem;
+
+  /* shape */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 14px;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-lift: 0 12px 28px -12px rgba(232,163,61,0.22);
+  --shadow-hover: 0 18px 38px -20px rgba(0,0,0,0.75);
+
+  --content-max: 76rem;
+  --header-h: 4.5rem;
+  --dur: 180ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"]{
+  --bg: #EEF1F0;
+  --surface: #FFFFFF;
+  --surface-2: #F5F6F5;
+  --border: rgba(15,20,20,0.09);
+  --border-strong: rgba(15,20,20,0.18);
+  --text: #171B1D;
+  --text-muted: #54606A;
+  --accent-text: #96650F;   /* darkened brass — meets contrast on light paper */
+  --accent-soft: rgba(150,101,15,0.10);
+  --accent-2: #2A6357;
+  --accent-2-soft: rgba(42,99,87,0.10);
+  --on-accent: #14100A;
+  --shadow-card: 0 1px 2px rgba(15,20,20,0.06);
+  --shadow-lift: 0 14px 28px -14px rgba(150,101,15,0.28);
+  --shadow-hover: 0 18px 38px -20px rgba(15,20,20,0.24);
+}
+
+/* Fallback for users without JS: honour system preference directly */
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg: #EEF1F0; --surface: #FFFFFF; --surface-2: #F5F6F5;
+    --border: rgba(15,20,20,0.09); --border-strong: rgba(15,20,20,0.18);
+    --text: #171B1D; --text-muted: #54606A;
+    --accent-text: #96650F; --accent-soft: rgba(150,101,15,0.10);
+    --accent-2: #2A6357; --accent-2-soft: rgba(42,99,87,0.10);
+    --shadow-card: 0 1px 2px rgba(15,20,20,0.06);
+    --shadow-lift: 0 14px 28px -14px rgba(150,101,15,0.28);
+    --shadow-hover: 0 18px 38px -20px rgba(15,20,20,0.24);
+  }
+}
+
+/* ==========================================================================
+   2b. SMOOTH SCROLLING + ANCHOR OFFSET
+   In-page links glide instead of snapping, and land clear of the sticky
+   header rather than under it.
+   ========================================================================== */
+html{ scroll-behavior: smooth; }
+section[id], main [id]{ scroll-margin-top: calc(var(--header-h) + 1.25rem); }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+     transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* ==========================================================================
+   3. BASE
+   ========================================================================== */
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.6;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+h1,h2,h3{ font-family: var(--font-display); color: var(--text); line-height: 1.15; letter-spacing: -0.01em; }
+h1{ font-size: var(--step-h1); font-weight: 700; }
+h2{ font-size: var(--step-h2); font-weight: 600; }
+h3{ font-size: var(--step-h3); font-weight: 600; }
+p{ color: var(--text-muted); }
+::selection{ background: var(--accent-soft); color: var(--text); }
+
+:focus-visible{ outline: 2px solid var(--focus-ring); outline-offset: 3px; border-radius: 2px; }
+
+.sr-only{
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.skip-link{
+  position: absolute; left: 1rem; top: -3rem;
+  background: var(--accent); color: var(--on-accent);
+  padding: 0.6rem 1rem; border-radius: var(--radius-sm);
+  font-weight: 600; font-size: var(--step-small); z-index: 100;
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus{ top: 1rem; }
+
+.wrap{ max-width: var(--content-max); margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
+
+.section{ padding-block: var(--sp-8); }
+.section-head{
+  display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-5);
+  margin-bottom: var(--sp-6); flex-wrap: wrap;
+}
+.section-eyebrow{
+  font-family: var(--font-mono); font-size: var(--step-small); color: var(--accent-text);
+  text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: var(--sp-2);
+}
+.section-rule{ flex: 1 1 8rem; height: 1px; background: linear-gradient(to right, var(--border-strong), transparent); min-width: 3rem; }
+.sec-meta{
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--text-muted); white-space: nowrap;
+}
+@media (max-width: 560px){ .sec-meta{ white-space: normal; } }
+
+/* Scroll-reveal: only ever applied by JS, so no-JS users see everything. */
+.js-reveal{ opacity: 0; transform: translateY(18px); }
+.js-reveal.is-visible{
+  opacity: 1; transform: none;
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+
+/* ==========================================================================
+   4. HEADER / NAV
+   ========================================================================== */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-row{ display: flex; align-items: center; justify-content: space-between; height: var(--header-h); gap: var(--sp-4); }
+
+.logo{ font-family: var(--font-mono); font-weight: 600; font-size: 1rem; color: var(--text); white-space: nowrap; }
+.logo em{ font-style: normal; color: var(--accent-text); }
+.logo small{ display: block; font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 400; }
+
+.nav-desktop{ display: none; align-items: center; gap: var(--sp-6); }
+.nav-desktop a{
+  font-size: var(--step-small); font-weight: 500; color: var(--text-muted);
+  transition: color var(--dur) var(--ease); position: relative; padding-block: 0.25rem;
+}
+.nav-desktop a:hover, .nav-desktop a:focus-visible{ color: var(--text); }
+.nav-desktop a::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+.nav-desktop a:hover::after, .nav-desktop a:focus-visible::after{ transform: scaleX(1); }
+
+.header-actions{ display: flex; align-items: center; gap: var(--sp-3); }
+
+.btn-icon{
+  width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-muted);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn-icon:hover, .btn-icon:focus-visible{ color: var(--accent-text); border-color: var(--accent-text); }
+.btn-icon svg{ width: 1.05rem; height: 1.05rem; }
+
+.icon-sun{ display: none; }
+[data-theme="light"] .icon-moon{ display: none; }
+[data-theme="light"] .icon-sun{ display: block; }
+
+.contact-pill{
+  font-size: var(--step-small); font-weight: 600; padding: 0.55rem 1rem;
+  border-radius: var(--radius-md); border: 1px solid var(--accent-text); color: var(--accent-text);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.contact-pill:hover, .contact-pill:focus-visible{ background: var(--accent); color: var(--on-accent); }
+
+/* Native, no-JS-required mobile disclosure menu */
+.mobile-nav{ display: block; }
+.mobile-nav summary{
+  list-style: none; cursor: pointer; width: 2.25rem; height: 2.25rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text);
+}
+.mobile-nav summary::-webkit-details-marker{ display: none; }
+.mobile-nav summary svg{ width: 1.15rem; height: 1.15rem; }
+.mobile-nav[open] summary .icon-menu{ display: none; }
+.mobile-nav .icon-close{ display: none; }
+.mobile-nav[open] summary .icon-close{ display: block; }
+
+.mobile-panel{
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: var(--sp-5) clamp(1.25rem, 4vw, 2.5rem);
+  display: flex; flex-direction: column; gap: var(--sp-1);
+}
+.mobile-panel a{
+  padding: 0.75rem 0.25rem; font-size: 1rem; font-weight: 500; color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-panel a:last-child{ border-bottom: none; }
+
+@media (min-width: 860px){
+  .nav-desktop{ display: flex; }
+  .mobile-nav{ display: none; }
+}
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero{ padding-block: clamp(3rem, 8vw, 6rem) var(--sp-8); }
+.hero-grid{ display: grid; gap: var(--sp-7); align-items: center; }
+@media (min-width: 960px){ .hero-grid{ grid-template-columns: 1.1fr 0.9fr; } }
+
+.status-chip{
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid var(--accent-2); background: var(--accent-2-soft);
+  color: var(--accent-2); font-family: var(--font-mono); font-size: var(--step-small);
+  padding: 0.4rem 0.8rem; border-radius: 999px; margin-bottom: var(--sp-5);
+}
+.status-chip .dot{ width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--accent-2);
+  animation: pulse 2s var(--ease) infinite; }
+@keyframes pulse{ 0%,100%{ opacity: 1; } 50%{ opacity: 0.35; } }
+
+.hero-title{ margin-bottom: var(--sp-3); }
+.hero-role{
+  font-family: var(--font-mono); font-size: var(--step-lead); font-weight: 500;
+  color: var(--accent-text); margin-bottom: var(--sp-4); min-height: 1.6em;
+}
+.hero-role .cursor{ display: inline-block; width: 1px; }
+.hero-role .cursor::after{ content: "|"; animation: blink 1s step-end infinite; }
+@keyframes blink{ 50%{ opacity: 0; } }
+
+.hero-lead{ max-width: 38rem; font-size: var(--step-lead); margin-bottom: var(--sp-6); }
+
+.hero-ctas{ display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-bottom: var(--sp-6); }
+.btn{
+  display: inline-flex; align-items: center; gap: 0.5rem; font-size: var(--step-small);
+  font-weight: 600; padding: 0.8rem 1.3rem; border-radius: var(--radius-md);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+  border: 1px solid transparent;
+}
+.btn svg{ width: 1rem; height: 1rem; }
+.btn:hover{ transform: translateY(-2px); }
+.btn-primary{ background: var(--accent); color: var(--on-accent); box-shadow: var(--shadow-lift); }
+.btn-secondary{ background: var(--surface); border-color: var(--border-strong); color: var(--text); }
+.btn-ghost{ border: 1px dashed var(--border-strong); color: var(--text-muted); }
+
+.hero-facts{ display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+.hero-fact{ font-family: var(--font-mono); }
+.hero-fact strong{ display: block; font-size: 1.4rem; color: var(--text); }
+.hero-fact span{ font-size: var(--step-small); color: var(--text-muted); }
+
+/* Signature element: a query console standing in for a headshot/gradient hero */
+.console{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card); overflow: hidden;
+}
+.console-bar{
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); background: var(--surface-2);
+}
+.console-dots{ display: flex; gap: 0.4rem; }
+.console-dots span{ width: 0.6rem; height: 0.6rem; border-radius: 50%; }
+.console-dots span:nth-child(1){ background: #E5674A; }
+.console-dots span:nth-child(2){ background: #E8A33D; }
+.console-dots span:nth-child(3){ background: #4E9C89; }
+.console-bar .path{ font-family: var(--font-mono); font-size: var(--step-small); color: var(--text-muted); }
+.console-bar .badge{
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-2); background: var(--accent-2-soft);
+  padding: 0.2rem 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--accent-2);
+}
+.console-body{ padding: 1.25rem 1.25rem 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; }
+.console-query{ color: var(--text-muted); line-height: 1.7; }
+.console-query .kw{ color: var(--accent-text); }
+.console-query .str{ color: var(--accent-2); }
+
+.console-table{ width: 100%; border-collapse: collapse; margin-top: var(--sp-4); font-size: 0.78rem; }
+.console-table caption{ text-align: left; font-size: var(--step-small); color: var(--text-muted); margin-bottom: 0.5rem; }
+.console-table th, .console-table td{ text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+.console-table th{ color: var(--text-muted); font-weight: 500; }
+.console-table td{ color: var(--text); }
+
+/* ==========================================================================
+   6. ABOUT
+   ========================================================================== */
+.about-grid{ display: grid; gap: var(--sp-5); }
+@media (min-width: 860px){ .about-grid{ grid-template-columns: 1.2fr 1fr; } }
+
+.card{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2rem); box-shadow: var(--shadow-card);
+}
+.card-label{
+  font-family: var(--font-mono); font-size: var(--step-small); color: var(--accent-2);
+  text-transform: uppercase; letter-spacing: 0.06em; display: flex; align-items: center; gap: 0.4rem;
+  margin-bottom: var(--sp-4);
+}
+.card-label .dash{ width: 0.8rem; height: 1px; background: var(--accent-2); }
+
+.about-bio p + p{ margin-top: var(--sp-4); }
+.about-hook{
+  font-family: var(--font-display); font-size: clamp(1.05rem, 0.98rem + 0.6vw, 1.32rem);
+  font-weight: 500; line-height: 1.45; color: var(--text) !important;
+  border-left: 2px solid var(--accent); padding-left: var(--sp-4); margin-bottom: var(--sp-5);
+}
+.about-meta{ display: flex; flex-wrap: wrap; gap: var(--sp-5); margin-top: var(--sp-6); padding-top: var(--sp-5);
+  border-top: 1px solid var(--border); font-size: var(--step-small); }
+.about-meta li{ display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); }
+.about-meta svg{ width: 1rem; height: 1rem; color: var(--accent-text); flex-shrink: 0; }
+
+/* Side column: stacked record blocks, each opening on a heavy rule. */
+.about-side{ display: block; }
+.side-block{ border-top: 2px solid var(--text); padding-top: var(--sp-4); }
+.side-block + .side-block{ margin-top: var(--sp-6); }
+.side-block .label{
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent-text); display: block; margin-bottom: var(--sp-3);
+}
+.side-block h3{ font-size: var(--step-h3); margin-bottom: var(--sp-2); }
+.side-block .meta{ font-size: var(--step-small); color: var(--text-muted); line-height: 1.65; }
+.side-block .meta b{ color: var(--text); font-weight: 600; font-family: var(--font-mono); font-size: 0.82rem; }
+
+/* ==========================================================================
+   7. STACK
+   Exactly three cards per row on laptop, two on tablet, one on phone.
+   ========================================================================== */
+.stack-grid{ display: grid; gap: var(--sp-4); grid-template-columns: 1fr; }
+@media (min-width: 620px){ .stack-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px){ .stack-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+.skill-card{
+  position: relative; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.skill-card::before{
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent-2));
+  transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--ease);
+}
+.skill-card:hover{ border-color: var(--accent-text); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.skill-card:hover::before{ transform: scaleX(1); }
+
+.skill-head{ display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-4); }
+.skill-badge{
+  width: 3.1rem; height: 3.1rem; border-radius: var(--radius-md); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft); color: var(--accent-text); border: 1px solid var(--accent-text);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.skill-badge svg{ width: 1.6rem; height: 1.6rem; }
+.skill-card:hover .skill-badge{ background: var(--accent); color: var(--on-accent); }
+.skill-tag{
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);
+  border: 1px solid var(--border-strong); padding: 0.15rem 0.5rem; border-radius: 999px;
+  text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+}
+.skill-card h3{ margin-bottom: var(--sp-2); }
+.skill-card > p{ font-size: var(--step-small); margin-bottom: var(--sp-4); font-family: var(--font-mono); }
+
+.meter{ display: flex; align-items: center; gap: var(--sp-3); }
+.meter-track{ flex: 1; height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.meter-fill{ height: 100%; background: linear-gradient(to right, var(--accent-2), var(--accent)); border-radius: 999px; }
+.meter-value{ font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); min-width: 2.4rem; text-align: right; }
+
+/* ==========================================================================
+   8. EXPERIENCE — ledger rows: dates in the margin, record on the right
+   ========================================================================== */
+.roles{ max-width: 58rem; }
+.role{
+  display: grid; grid-template-columns: 1fr; gap: var(--sp-4);
+  padding-block: var(--sp-6); border-top: 1px solid var(--border-strong);
+}
+.role:last-of-type{ border-bottom: 1px solid var(--border-strong); }
+@media (min-width: 820px){
+  .role{ grid-template-columns: 13rem 1fr; gap: var(--sp-7); }
+}
+
+.role-when{
+  font-family: var(--font-mono); font-size: var(--step-small); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted); line-height: 1.8;
+}
+.role-when b{ display: block; color: var(--accent-text); font-weight: 600; }
+.role-now{
+  display: flex; align-items: center; gap: 0.4rem;
+  color: var(--accent-2); margin-top: 0.5rem;
+}
+.role-now .dot{
+  width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--accent-2);
+  animation: pulse 2s var(--ease) infinite;
+}
+
+.role h3{ font-size: var(--step-h2); }
+.role-org{ font-size: var(--step-body); color: var(--text-muted); margin-top: 0.15rem; margin-bottom: var(--sp-4); }
+.role ul{ display: grid; gap: 0.65rem; }
+.role li{
+  display: grid; grid-template-columns: 0.9rem 1fr; gap: 0.7rem;
+  color: var(--text-muted); line-height: 1.6;
+}
+.role li::before{ content: ""; width: 0.6rem; height: 1px; background: var(--accent); margin-top: 0.85em; }
+
+.chip-row{ display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--sp-5); }
+.chip{
+  font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-muted); background: transparent;
+  border: 1px solid var(--border-strong); padding: 0.28rem 0.6rem; border-radius: var(--radius-sm);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.chip:hover{ color: var(--accent-text); border-color: var(--accent-text); }
+
+/* ==========================================================================
+   9. PROJECTS — exactly two per row on desktop
+   ========================================================================== */
+.project-grid{ display: grid; gap: var(--sp-5); grid-template-columns: 1fr; }
+@media (min-width: 760px){ .project-grid{ grid-template-columns: repeat(2, 1fr); } }
+
+.project-card{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.project-card:hover{ border-color: var(--accent-text); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+/* Top bar: what kind of thing it is, and what it's built in. */
+.project-top{
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: 0.8rem clamp(1.25rem, 3vw, 1.6rem); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.project-kind{
+  font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent-text);
+}
+.project-stack{
+  font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.08em; color: var(--text-muted);
+}
+
+.project-body{
+  padding: clamp(1.4rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.6rem);
+  display: flex; flex-direction: column; gap: var(--sp-3); flex: 1;
+}
+.project-card h3{ font-size: var(--step-h2); }
+.project-card p{ font-size: 0.97rem; color: var(--text-muted); margin-bottom: var(--sp-2); }
+
+/* Two flush cells, hairline-separated — a spec plate, not a rounded box. */
+.facts{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border); margin-top: auto;
+}
+.facts div{
+  background: var(--surface-2); padding: 0.65rem 0.8rem;
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--text);
+}
+.facts span{
+  display: block; color: var(--text-muted); font-size: 0.6rem;
+  letter-spacing: 0.11em; text-transform: uppercase; margin-bottom: 0.2rem;
+}
+@media (max-width: 480px){ .facts{ grid-template-columns: 1fr; } }
+
+.project-foot{
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: 0.85rem clamp(1.25rem, 3vw, 1.6rem); border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.project-foot .note{
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.repo{
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text); border-bottom: 1px solid var(--border-strong); padding-bottom: 2px;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.repo:hover, .repo:focus-visible{ color: var(--accent-text); border-bottom-color: var(--accent); }
+.repo svg{ width: 0.9rem; height: 0.9rem; }
+
+/* ==========================================================================
+   10. CERTIFICATION
+   ========================================================================== */
+.cert-card{
+  display: flex; flex-wrap: wrap; gap: var(--sp-5); align-items: center; justify-content: space-between;
+  max-width: 46rem;
+}
+.cert-info{ display: flex; align-items: center; gap: var(--sp-4); }
+.cert-icon{
+  width: 3rem; height: 3rem; border-radius: var(--radius-md); flex-shrink: 0;
+  background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center;
+}
+.cert-icon svg{ width: 1.4rem; height: 1.4rem; }
+.cert-info h3{ margin-bottom: 0.15rem; }
+.cert-info p{ font-size: var(--step-small); }
+.cert-actions{ display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; }
+.verified{
+  font-family: var(--font-mono); font-size: var(--step-small); color: var(--accent-2);
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.verified svg{ width: 1rem; height: 1rem; }
+
+/* ==========================================================================
+   11. WHY HIRE
+   ========================================================================== */
+.value-grid{ display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-bottom: var(--sp-5); }
+.value-card{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--sp-5);
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.value-card:hover{ border-color: var(--accent-text); transform: translateY(-3px); }
+.value-icon{
+  width: 2.5rem; height: 2.5rem; border-radius: var(--radius-md); background: var(--accent-soft);
+  color: var(--accent-text); display: flex; align-items: center; justify-content: center; margin-bottom: var(--sp-4);
+}
+.value-icon svg{ width: 1.2rem; height: 1.2rem; }
+.value-card h3{ font-size: 1.02rem; margin-bottom: var(--sp-2); }
+.value-card p{ font-size: var(--step-small); }
+
+.proof-row{ display: grid; gap: var(--sp-3); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.proof-item{
+  display: flex; align-items: center; gap: 0.6rem; justify-content: center; text-align: center;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: var(--sp-4); font-size: var(--step-small); font-weight: 500;
+}
+.proof-item svg{ width: 1.1rem; height: 1.1rem; color: var(--accent-text); flex-shrink: 0; }
+
+/* ==========================================================================
+   12. CONTACT
+   ========================================================================== */
+.contact-grid{ display: grid; gap: var(--sp-7); }
+@media (min-width: 960px){ .contact-grid{ grid-template-columns: 0.85fr 1.15fr; } }
+
+.contact-list{ display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-5); }
+.contact-list a, .contact-list .static-row{
+  display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-4);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+  transition: border-color var(--dur) var(--ease);
+}
+.contact-list a:hover, .contact-list a:focus-visible{ border-color: var(--accent-text); }
+.contact-icon{
+  width: 2.4rem; height: 2.4rem; border-radius: var(--radius-md); flex-shrink: 0;
+  background: var(--accent-soft); color: var(--accent-text); display: flex; align-items: center; justify-content: center;
+}
+.contact-icon svg{ width: 1.1rem; height: 1.1rem; }
+.contact-text .label{ font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); display: block; }
+.contact-text .value{ font-family: var(--font-mono); font-size: 0.9rem; color: var(--text); }
+
+.social-row{ display: flex; gap: var(--sp-3); margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--border); }
+.social-row a{
+  display: inline-flex; align-items: center; gap: 0.5rem; font-size: var(--step-small); font-weight: 600;
+  border: 1px solid var(--border-strong); padding: 0.6rem 1rem; border-radius: var(--radius-md); color: var(--text);
+}
+.social-row a:hover, .social-row a:focus-visible{ border-color: var(--accent-text); color: var(--accent-text); }
+.social-row svg{ width: 1rem; height: 1rem; }
+
+.form-card{ padding: clamp(1.5rem, 3vw, 2rem); }
+.form-row{ display: grid; gap: var(--sp-4); }
+@media (min-width: 560px){ .form-row.two-col{ grid-template-columns: 1fr 1fr; } }
+.field{ margin-bottom: var(--sp-4); }
+.field label{
+  display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem;
+}
+.field input, .field textarea{
+  width: 100%; background: var(--bg); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem; font-size: 0.92rem; color: var(--text); resize: vertical;
+  transition: border-color var(--dur) var(--ease);
+}
+.field input:focus, .field textarea:focus{ border-color: var(--accent); outline: none; }
+.field input::placeholder, .field textarea::placeholder{ color: var(--text-muted); opacity: 0.7; }
+.form-status{ font-size: var(--step-small); margin-bottom: var(--sp-4); min-height: 1.2em; }
+.form-status[data-state="ok"]{ color: var(--accent-2); }
+.form-status[data-state="error"]{ color: var(--danger); }
+.form-fallback{ font-size: var(--step-small); color: var(--text-muted); margin-top: var(--sp-3); }
+.form-fallback a{ color: var(--accent-text); font-weight: 600; }
+.submit-btn{ width: 100%; justify-content: center; }
+
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+.site-footer{ border-top: 1px solid var(--border); padding-block: var(--sp-6); }
+.footer-row{
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  font-family: var(--font-mono); font-size: var(--step-small); color: var(--text-muted);
+}
+.footer-row a{ color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.35rem; }
+.footer-row a:hover, .footer-row a:focus-visible{ color: var(--accent-text); }
+.footer-row svg{ width: 0.9rem; height: 0.9rem; }
+</style>
 </head>
-<body class="dark:bg-slate-950 bg-white dark:text-slate-200 text-slate-800 antialiased font-sans selection:bg-accentCyan/30 selection:text-white transition-colors duration-300">
+<body>
 
-    <!-- Scroll Progress Indicator -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-accentCyan to-accentBlue z-50 transition-all duration-75" style="width: 0%"></div>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Spotlight Background -->
-    <div id="mouse-glow"></div>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="#top">
+      TEJAS<em>_</em>PAWAR
+      <small>DATA ANALYST</small>
+    </a>
 
-    <div class="matrix-grid min-h-screen relative z-10">
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#why-hire">Core Value</a>
+    </nav>
 
-        <!-- Header / Navigation -->
-        <header class="fixed top-0 w-full z-40 glass-panel border-b backdrop-blur-md dark:border-slate-800/50">
-            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <a href="#" class="font-mono text-xl font-bold tracking-wider dark:text-white text-slate-900">
-                    TEJAS<span class="text-accentCyan">.</span>PAWAR<span class="text-xs text-accentBlue font-normal block tracking-normal">DATA ARCHITECT</span>
-                </a>
-                
-                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm dark:text-slate-400 text-slate-600">
-                    <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
-                    <a href="#skills" class="hover:text-accentCyan transition-colors">Tech Stack</a>
-                    <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
-                    <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
-                    <a href="#certification-link" class="hover:text-accentCyan transition-colors">Certifications</a>
-                    <a href="#why-hire" class="hover:text-accentCyan transition-colors">Core Value</a>
-                    <a href="#contact" class="px-4 py-2 rounded-lg bg-black/5 dark:bg-white/5 border dark:border-white/10 border-slate-200 hover:border-accentCyan/50 hover:bg-accentCyan/10 text-accentCyan transition-all">Contact</a>
-                    
-                    <!-- Theme Toggle Switch Module Custom Framework -->
-                    <button id="theme-toggle" class="w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-accentCyan transition-all" aria-label="Toggle Theme">
-                        <i id="theme-icon" class="fa-solid fa-sun dark:fa-moon"></i>
-                    </button>
-                </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="contact-pill" href="#contact">Contact</a>
 
-                <div class="flex items-center gap-4 md:hidden">
-                    <button id="theme-toggle-mobile" class="w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400" aria-label="Toggle Theme Mobile">
-                        <i id="theme-icon-mobile" class="fa-solid fa-sun dark:fa-moon"></i>
-                    </button>
-                    <button id="menu-btn" class="dark:text-slate-400 text-slate-600 hover:text-accentCyan focus:outline-none">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full dark:bg-slate-950 bg-white border-b border-slate-200 dark:border-slate-800 px-6 py-6 flex flex-col space-y-4">
-                <a href="#about" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">About</a>
-                <a href="#skills" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">Tech Stack</a>
-                <a href="#experience" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">Experience</a>
-                <a href="#projects" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">Projects</a>
-                <a href="#certification-link" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">Certifications</a>
-                <a href="#why-hire" class="mobile-link dark:text-slate-300 text-slate-700 hover:text-accentCyan text-lg">Core Value</a>
-                <a href="#contact" class="mobile-link text-accentCyan text-lg pt-2 border-t border-slate-200 dark:border-slate-800">Contact Me</a>
-            </div>
-        </header>
+      <details class="mobile-nav">
+        <summary aria-label="Open navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </summary>
+        <nav class="mobile-panel" aria-label="Mobile primary">
+          <a href="#about">About</a>
+          <a href="#stack">Tech Stack</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#why-hire">Core Value</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
 
-        <!-- Section 1: Hero Section -->
-        <section class="min-h-screen pt-24 flex items-center relative px-6 max-w-7xl mx-auto overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs text-accentCyan font-mono tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> READY FOR INTERN &amp; FULL-TIME ROLES
-                    </div>
-                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight dark:text-white text-slate-900">
-                        Tejas Pawar
-                    </h1>
-                    <h2 class="text-xl md:text-2xl font-semibold bg-gradient-to-r from-accentCyan to-accentBlue bg-clip-text text-transparent">
-                        Aspiring Data Analyst | Data Science Enthusiast
-                    </h2>
-                    
-                    <!-- Typewriter Frame -->
-                    <div class="h-8 font-mono text-sm md:text-base dark:text-slate-400 text-slate-600 bg-black/5 dark:bg-slate-900 inline-block px-3 py-1 rounded border border-slate-200 dark:border-slate-800">
-                        <span class="text-accentCyan">&gt;_</span> <span id="typewriter" class="typewriter-cursor"></span>
-                    </div>
+<main id="main">
 
-                    <p class="dark:text-slate-400 text-slate-600 text-base md:text-lg max-w-xl leading-relaxed">
-                        Computer Science graduate with hands-on experience in data analytics, dashboard development, and business insights using Python, SQL, Excel, and Power BI. Turn messy infrastructure matrices into actionable intelligence.
-                    </p>
+  <!-- HERO -->
+  <section class="hero wrap" id="top" aria-labelledby="hero-heading">
+    <div class="hero-grid">
+      <div>
+        <span class="status-chip"><span class="dot" aria-hidden="true"></span> Open to internship &amp; full-time roles</span>
+        <h1 id="hero-heading" class="hero-title">Tejas Pawar</h1>
+        <p class="hero-role"><span id="typewriter">Python · SQL · Power BI · Excel</span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="hero-lead">Computer Science graduate with hands-on experience in data analytics, dashboard development and business insight. I turn messy spreadsheets and raw tables into decisions someone can actually act on.</p>
 
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="#contact" class="px-6 py-3 rounded-lg bg-gradient-to-r from-accentCyan to-accentBlue dark:text-slate-950 text-white font-bold shadow-lg shadow-accentCyan/20 hover:opacity-90 transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> Contact Me
-                        </a>
-                        <a href="#projects" class="px-6 py-3 rounded-lg glass-panel hover:bg-black/5 dark:hover:bg-slate-900 font-medium dark:text-white text-slate-800 transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-chart-line text-accentCyan"></i> View Projects
-                        </a>
-                        <a href="Tejas_Pawar_Resume.pdf" download="Tejas_Pawar_Resume.pdf" class="px-6 py-3 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 hover:border-accentCyan/50 dark:text-slate-300 text-slate-600 dark:hover:text-white transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-arrow-down-to-line"></i> Download Resume
-                        </a>
-                    </div>
-                </div>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l9 6 9-6M3 8v10h18V8M3 8l9-5 9 5"/></svg>
+            Get in touch
+          </a>
+          <a class="btn btn-secondary" href="#projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19h16M6 15l4-5 3 3 5-7"/></svg>
+            View projects
+          </a>
+          <a class="btn btn-ghost" href="Tejas_Pawar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+            Resume (PDF)
+          </a>
+        </div>
 
-                <!-- Right Live Dashboard Metric Module -->
-                <div class="lg:col-span-5 relative w-full aspect-square max-w-[450px] mx-auto lg:max-w-none">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-accentCyan/10 to-accentBlue/10 rounded-3xl blur-3xl -z-10"></div>
-                    <div class="w-full h-full glass-panel rounded-2xl p-6 flex flex-col justify-between shadow-2xl relative border dark:border-slate-800/50">
-                        <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-4">
-                            <div class="flex items-center gap-2">
-                                <span class="flex space-x-1">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 block"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 block"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 block"></span>
-                                </span>
-                                <span class="text-xs font-mono dark:text-slate-400 text-slate-500">tejas_analytics_core.py</span>
-                            </div>
-                            <span class="text-xs font-mono text-accentCyan bg-accentCyan/10 px-2 py-0.5 rounded">LIVE TELEMETRY</span>
-                        </div>
-                        
-                        <div class="my-auto py-4">
-                            <canvas id="heroLiveChart" class="w-full max-h-[220px]"></canvas>
-                        </div>
+        <dl class="hero-facts">
+          <div class="hero-fact"><dt class="sr-only">CGPA</dt><dd><strong>8.08</strong><span>CGPA / 10</span></dd></div>
+          <div class="hero-fact"><dt class="sr-only">Internships</dt><dd><strong>2</strong><span>Internships completed</span></dd></div>
+          <div class="hero-fact"><dt class="sr-only">Projects</dt><dd><strong>4</strong><span>Projects shipped</span></dd></div>
+        </dl>
+      </div>
 
-                        <div class="grid grid-cols-3 gap-2 pt-4 border-t border-slate-200 dark:border-slate-800 text-center">
-                            <div class="p-2 bg-black/5 dark:bg-slate-900 rounded">
-                                <div class="text-[10px] font-mono dark:text-slate-400 text-slate-500 uppercase">SQL Query Time</div>
-                                <div class="text-sm font-bold font-mono text-emerald-500 dark:text-emerald-400">0.002s</div>
-                            </div>
-                            <div class="p-2 bg-black/5 dark:bg-slate-900 rounded">
-                                <div class="text-[10px] font-mono dark:text-slate-400 text-slate-500 uppercase">EDA Execution</div>
-                                <div class="text-sm font-bold font-mono text-accentCyan">99.4%</div>
-                            </div>
-                            <div class="p-2 bg-black/5 dark:bg-slate-900 rounded">
-                                <div class="text-[10px] font-mono dark:text-slate-400 text-slate-500 uppercase">Data Quality</div>
-                                <div class="text-sm font-bold font-mono text-accentBlue">100%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="console" role="img" aria-label="Illustrative terminal panel showing a mock SQL query and its result row, styled to represent Tejas's SQL and reporting work">
+        <div class="console-bar">
+          <span class="console-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="path">query.sql</span>
+          <span class="badge">SAMPLE OUTPUT</span>
+        </div>
+        <div class="console-body">
+          <p class="console-query">
+            <span class="kw">SELECT</span> role, focus, status<br>
+            <span class="kw">FROM</span> analysts<br>
+            <span class="kw">WHERE</span> name = <span class="str">'Tejas Pawar'</span>;
+          </p>
+          <table class="console-table">
+            <caption>1 row returned</caption>
+            <thead>
+              <tr><th scope="col">role</th><th scope="col">focus</th><th scope="col">status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Data Analyst</td><td>BI &amp; reporting</td><td>open_to_hire</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Section 2: About Me Section -->
-        <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// INGESTING BIOGRAPHY DATA</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Operational Profile</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentCyan/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-7 glass-panel rounded-2xl p-6 md:p-8 space-y-6 flex flex-col justify-between dark:border-slate-800/50">
-                    <div class="space-y-4">
-                        <div class="dark:text-slate-400 text-slate-500 font-mono text-xs flex items-center gap-2">
-                            <span class="text-accentCyan">●</span> MAIN OBJECTIVE FUNCTION
-                        </div>
-                        <p class="dark:text-slate-300 text-slate-700 text-lg leading-relaxed">
-                            Computer Science graduate aspiring Data Analyst with practical exposure to Python, SQL, Excel, and Power BI. Gained real-world experience through internship work involving data cleaning, exploratory data analysis, SQL querying, dashboard creation, and business reporting.
-                        </p>
-                        <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
-                            Passionate about transforming raw data into meaningful insights and eager to contribute in a professional environment. Specializes in building clear analytical pipelines that turn raw chaos into executive clarity.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-6 text-sm dark:text-slate-400 text-slate-600 font-mono">
-                        <div>
-                            <i class="fa-solid fa-location-dot text-accentCyan mr-2"></i> Shindkheda, Dhule, Maharashtra, India
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-user-check text-accentBlue mr-2"></i> Open To Relocate
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 glass-panel rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between border dark:border-slate-800/50">
-                    <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-accentBlue/10 rounded-full blur-3xl pointer-events-none"></div>
-                    
-                    <div class="space-y-4">
-                        <div class="dark:text-slate-400 text-slate-500 font-mono text-xs flex items-center gap-2">
-                            <span class="text-accentBlue">■</span> EDUCATION PIPELINE
-                        </div>
-                        <div class="border-l-2 border-accentCyan/50 pl-4 space-y-2">
-                            <span class="text-xs font-mono bg-black/5 dark:bg-slate-900 dark:text-slate-300 text-slate-600 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800">2022 – 2025</span>
-                            <h3 class="text-xl font-bold dark:text-white text-slate-900 tracking-tight">Bachelor of Science in Computer Science</h3>
-                            <p class="text-sm dark:text-slate-400 text-slate-500">Shri Shivaji Vidya Prasarak Sanstha (SSVPS College), Dhule</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between">
-                        <div>
-                            <div class="text-xs font-mono dark:text-slate-400 text-slate-500">Cumulative Performance Index</div>
-                            <div class="text-3xl font-extrabold font-mono dark:text-white text-slate-900 mt-1">8.08 <span class="text-sm text-accentCyan font-normal">/ 10 CGPA</span></div>
-                        </div>
-                        <div class="w-12 h-12 rounded-lg bg-accentCyan/10 border border-accentCyan/20 flex items-center justify-center text-accentCyan text-xl">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Tech Stack Section -->
-        <section id="skills" class="py-24 px-6 max-w-7xl mx-auto relative">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// TECHNICAL ENVIRONMENT SPECS</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">The Infrastructure &amp; Tooling</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentBlue/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Python Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-2xl text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
-                            <i class="fa-brands fa-python"></i>
-                        </div>
-                        <span class="font-mono text-xs text-sky-500 bg-sky-500/10 px-2 py-1 rounded border border-sky-500/20">CORE ENGINE</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">Python Execution</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">Pandas, NumPy, Matplotlib, Seaborn</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-sky-400 to-accentBlue h-full rounded-full" style="width: 85%"></div>
-                    </div>
-                </div>
-
-                <!-- SQL Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <span class="font-mono text-xs text-amber-600 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20">RELATIONAL</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">SQL Architecture</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">MySQL, CRUD, Joins, Window Functions</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-amber-400 to-orange-500 h-full rounded-full" style="width: 90%"></div>
-                    </div>
-                </div>
-
-                <!-- Power BI Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-2xl text-yellow-600 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-chart-pie"></i>
-                        </div>
-                        <span class="font-mono text-xs text-yellow-600 bg-yellow-500/10 px-2 py-1 rounded border border-yellow-500/20">ANALYTICS</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">Power BI Visualization</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">DAX, Data Modeling</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-full rounded-full" style="width: 80%"></div>
-                    </div>
-                </div>
-
-                <!-- Excel Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-2xl text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-file-excel"></i>
-                        </div>
-                        <span class="font-mono text-xs text-emerald-600 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">FOUNDATIONAL</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">Advanced Excel</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">Pivot Tables, Dashboards, VLOOKUP/XLOOKUP</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full" style="width: 85%"></div>
-                    </div>
-                </div>
-
-                <!-- EDA Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <span class="font-mono text-xs text-indigo-600 bg-indigo-500/10 px-2 py-1 rounded border border-indigo-500/20">METHODOLOGY</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">Exploratory Data Analysis (EDA)</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">Statistical Trends &amp; Inference</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-full rounded-full" style="width: 80%"></div>
-                    </div>
-                </div>
-
-                <!-- Cleaning Skill Card -->
-                <div class="glass-panel rounded-xl p-6 group dark:border-slate-800/50">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-accentCyan/10 border border-accentCyan/20 flex items-center justify-center text-2xl text-accentCyan group-hover:bg-accentCyan group-hover:text-white transition-all duration-300">
-                            <i class="fa-solid fa-broom"></i>
-                        </div>
-                        <span class="font-mono text-xs text-accentCyan bg-accentCyan/10 px-2 py-1 rounded border border-accentCyan/20">PREPROCESSING</span>
-                    </div>
-                    <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-1 group-hover:text-accentCyan transition-colors">Data Cleaning &amp; Viz</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 font-mono">Anomaly Mitigation &amp; Reporting</p>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-accentCyan to-accentBlue h-full rounded-full" style="width: 90%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Experience Section -->
-        <section id="experience" class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// FIELD OPERATION RECORD</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Professional Experience</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentCyan/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <div class="max-w-3xl mx-auto relative border-l-2 border-slate-300 dark:border-slate-800 pl-6 md:pl-10 space-y-12">
-                <div class="absolute w-4 h-4 bg-accentCyan rounded-full -left-[9px] top-1 shadow-lg shadow-accentCyan/50 ring-4 dark:ring-slate-950 ring-white"></div>
-                
-                <div class="glass-panel rounded-2xl p-6 md:p-8 relative border dark:border-slate-800/50">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                        <div>
-                            <span class="text-xs font-mono font-bold tracking-wider text-accentCyan bg-accentCyan/10 px-2 py-1 rounded">AUG 2025 – DEC 2025</span>
-                            <h3 class="text-2xl font-bold dark:text-white text-slate-900 mt-2 tracking-tight">Data Analyst Intern</h3>
-                            <p class="text-sm font-medium dark:text-slate-400 text-slate-600">NexGen Analytix</p>
-                        </div>
-                        <div class="text-right hidden md:block">
-                            <span class="text-xs font-mono text-slate-400"><i class="fa-solid fa-circle-nodes mr-1 text-emerald-500"></i> VERIFIED ROLE</span>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-3 dark:text-slate-300 text-slate-700 text-sm md:text-base">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-chevron-right text-accentCyan text-xs mt-1.5 flex-shrink-0"></i>
-                            <span>Analyzed real-world datasets using Python, SQL, Excel, and Power BI.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-chevron-right text-accentCyan text-xs mt-1.5 flex-shrink-0"></i>
-                            <span>Performed comprehensive data cleaning and exploratory data analysis (EDA).</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-chevron-right text-accentCyan text-xs mt-1.5 flex-shrink-0"></i>
-                            <span>Used optimized SQL queries for relational database analysis.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-chevron-right text-accentCyan text-xs mt-1.5 flex-shrink-0"></i>
-                            <span>Built interactive analytics dashboards to highlight production intelligence thresholds.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-chevron-right text-accentCyan text-xs mt-1.5 flex-shrink-0"></i>
-                            <span>Supported broad cross-functional reporting tracks and executive business insights.</span>
-                        </li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2 pt-6 mt-6 border-t border-white/5 font-mono text-xs">
-                        <span class="px-2 py-1 bg-white/5 rounded text-slate-400">Python</span>
-                        <span class="px-2 py-1 bg-white/5 rounded text-slate-400">MySQL</span>
-                        <span class="px-2 py-1 bg-white/5 rounded text-slate-400">Power BI</span>
-                        <span class="px-2 py-1 bg-white/5 rounded text-slate-400">DAX</span>
-                        <span class="px-2 py-1 bg-white/5 rounded text-slate-400">EDA Processing</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Projects Section -->
-        <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// PERFORMANCE PIPELINES</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Core Production Deliverables</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentBlue/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- Project 1 -->
-                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between group border dark:border-slate-800/50">
-                    <div class="p-6 md:p-8 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2.5 py-1 rounded">FULL STACK APP</span>
-                            <div class="flex gap-2 text-slate-500 text-xs font-mono">
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">Python</span>
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">Streamlit</span>
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">MySQL</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-accentCyan transition-colors">User Management System (CRUD App)</h3>
-                        <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed">
-                            Robust database administration layer containing explicit signup/login engines, cryptographic checks, and clean relational normalization metrics.
-                        </p>
-                        <div class="p-3 bg-black/5 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-mono grid grid-cols-2 gap-2">
-                            <div><span class="dark:text-slate-500 text-slate-400">AUTH TYPE:</span> Secure</div>
-                            <div><span class="dark:text-slate-500 text-slate-400">VALIDATION:</span> Real-time</div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-black/[0.02] dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                        <span class="text-xs font-mono dark:text-slate-400 text-slate-500"><i class="fa-solid fa-code-fork mr-1"></i> MySQL Schema</span>
-                        <a href="https://github.com/Tejas-Pawar09" target="_blank" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-800 dark:text-slate-300 text-slate-700 hover:text-accentCyan flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between group border dark:border-slate-800/50">
-                    <div class="p-6 md:p-8 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded">RELATIONAL LOGIC</span>
-                            <div class="flex gap-2 text-slate-500 text-xs font-mono">
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">Python</span>
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">MySQL</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-accentCyan transition-colors">Library Management System</h3>
-                        <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed">
-                            Transactional platform governing programmatic infrastructure mapping loops for book inventory allocation tracking schemas and dynamic availability reporting matrices.
-                        </p>
-                        <div class="p-3 bg-black/5 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-mono grid grid-cols-2 gap-2">
-                            <div><span class="dark:text-slate-500 text-slate-400">ENGINE:</span> CRUD</div>
-                            <div><span class="dark:text-slate-500 text-slate-400">CHECKS:</span> Availability</div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-black/[0.02] dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                        <span class="text-xs font-mono dark:text-slate-400 text-slate-500"><i class="fa-solid fa-circle text-[6px] text-accentCyan"></i> Reports Generation</span>
-                        <a href="https://github.com/Tejas-Pawar09/-Library-Management-System" target="_blank" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-800 dark:text-slate-300 text-slate-700 hover:text-accentCyan flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between group border dark:border-slate-800/50">
-                    <div class="p-6 md:p-8 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded">BUSINESS INTEL</span>
-                            <div class="flex gap-2 text-slate-500 text-xs font-mono">
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">Excel Analytics</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-accentCyan transition-colors">Blinkit Sales Analytics Dashboard</h3>
-                        <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed">
-                            Operational mapping workbook processing granular e-commerce transactions, parsing distribution parameters across regional outlets and product categorization fields.
-                        </p>
-                        <div class="p-3 bg-black/5 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-mono grid grid-cols-2 gap-2">
-                            <div><span class="dark:text-slate-500 text-slate-400">FILTERS:</span> Dynamic</div>
-                            <div><span class="dark:text-slate-500 text-slate-400">METRICS:</span> Sales KPI</div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-black/[0.02] dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                        <span class="text-xs font-mono dark:text-slate-400 text-slate-500"><i class="fa-solid fa-chart-bar mr-1"></i> Outlet Insights</span>
-                        <a href="https://github.com/Tejas-Pawar09/blinkit-excel-sales-analysis" target="_blank" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-800 dark:text-slate-300 text-slate-700 hover:text-accentCyan flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between group border dark:border-slate-800/50">
-                    <div class="p-6 md:p-8 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-purple-500 bg-purple-500/10 px-2.5 py-1 rounded">BI ARCHITECTURE</span>
-                            <div class="flex gap-2 text-slate-500 text-xs font-mono">
-                                 <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">Power BI</span>
-                                <span class="px-2 py-0.5 rounded bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-slate-800 dark:text-slate-200 hover:border-accentBlue/30 hover:bg-accentBlue/5 hover:text-accentBlue transition-all">DAX Engine</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold dark:text-white text-slate-900 group-hover:text-accentCyan transition-colors">Students Performance Analysis Dashboard</h3>
-                        <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed">
-                            Interactive corporate BI system mapping multi-tier academic indicators, division ratios, topper cohorts, and performance eligibility trends.
-                        </p>
-                        <div class="p-3 bg-black/5 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-mono grid grid-cols-2 gap-2">
-                            <div><span class="dark:text-slate-500 text-slate-400">SLICERS:</span> Real-time</div>
-                            <div><span class="dark:text-slate-500 text-slate-400">MODELING:</span> Advanced DAX</div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-black/[0.02] dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                        <span class="text-xs font-mono dark:text-slate-400 text-slate-500"><i class="fa-solid fa-bolt mr-1"></i> Placement Insights</span>
-                        <a href="https://github.com/Tejas-Pawar09/student-performance-data-analytics" target="_blank" class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-800 dark:text-slate-300 text-slate-700 hover:text-accentCyan flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Section 6: Certification Section -->
-        <section id="certification-link" class="py-24 px-6 max-w-7xl mx-auto">
-            
-            <!-- Haa bhai, yeh rahi baki sections jaisi sagi heading aur line! -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// VERIFYING CREDENTIAL MATRIX</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Certifications</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentCyan/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <!-- Aapka box jisme humne koi ched-chad nahi ki he, ekdum pehle jaisa he -->
-            <div class="glass-panel rounded-2xl p-6 md:p-8 border max-w-3xl mx-auto relative overflow-hidden dark:border-slate-800/50">
-                <div class="absolute -left-16 top-0 w-32 h-32 bg-accentCyan/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
-                    <div class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-accentCyan to-accentBlue flex items-center justify-center text-white text-xl font-extrabold shadow-md">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                        <div>
-                            <!-- Aapka original text safe hai bhai -->
-                            <span class="text-xs font-mono text-accentCyan uppercase block font-bold tracking-widest">// PROFESSIONAL ENDORSEMENT</span>
-                            <h3 class="text-xl font-bold dark:text-white text-slate-900 mt-1">Data Analytics &amp; Data Science</h3>
-                            <p class="text-sm dark:text-slate-400 text-slate-500">Ethan’s Tech, Pune</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-                        <a href="Data_Analytics_Certificate.pdf" target="_blank" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-accentCyan/10 border border-accentCyan/30 hover:bg-accentCyan/20 text-accentCyan text-xs font-mono text-center transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-eye"></i> View Certificate
-                        </a>
-                        <span class="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-black/5 dark:bg-slate-900 border dark:border-slate-800 border-slate-200 font-mono text-xs dark:text-slate-300 text-slate-600 whitespace-nowrap">
-                            Verified <i class="fa-solid fa-circle-check text-emerald-500 ml-1"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 7: Recruiter Section -->
-        <section id="why-hire" class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="text-center max-w-xl mx-auto mb-16">
-                <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// PERFORMANCE GUARANTEE METRICS</p>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Why Hire Me?</h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-panel rounded-xl p-5 border relative group dark:border-slate-800/50">
-                    <div class="w-10 h-10 rounded-lg bg-accentCyan/10 text-accentCyan flex items-center justify-center text-lg font-bold mb-4">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3 class="text-base font-bold dark:text-white text-slate-900 mb-2">Analytical Thinking</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">Transforms complex system raw input sequences into targetable execution insights.</p>
-                </div>
-
-                <div class="glass-panel rounded-xl p-5 border relative group dark:border-slate-800/50">
-                    <div class="w-10 h-10 rounded-lg bg-accentBlue/10 text-accentBlue flex items-center justify-center text-lg font-bold mb-4">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="text-base font-bold dark:text-white text-slate-900 mb-2">Dashboard Creation</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">Designs premium cross-filtering multi-tier tracking viewports natively.</p>
-                </div>
-
-                <div class="glass-panel rounded-xl p-5 border relative group dark:border-slate-800/50">
-                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg font-bold mb-4">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 class="text-base font-bold dark:text-white text-slate-900 mb-2">SQL Querying</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">Writes robust database processing scripts using clean relational structures.</p>
-                </div>
-
-                <div class="glass-panel rounded-xl p-5 border relative group dark:border-slate-800/50">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg font-bold mb-4">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h3 class="text-base font-bold dark:text-white text-slate-900 mb-2">Problem Solving</h3>
-                    <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">Deconstructs broad ambiguous requirements down to structured technical pipelines.</p>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6 max-w-3xl mx-auto text-center">
-                <div class="glass-panel p-4 rounded-xl border text-sm font-semibold dark:text-slate-300 text-slate-700 dark:border-slate-800/50">
-                    <i class="fa-solid fa-chart-line text-accentCyan mr-2"></i> Data Visualization Expert
-                </div>
-                <div class="glass-panel p-4 rounded-xl border text-sm font-semibold dark:text-slate-300 text-slate-700 dark:border-slate-800/50">
-                    <i class="fa-solid opacity-100 fa-graduation-cap text-accentBlue mr-2"></i> Fast Learner Spectrum
-                </div>
-                <div class="glass-panel p-4 rounded-xl border text-sm font-semibold dark:text-slate-300 text-slate-700 dark:border-slate-800/50">
-                    <i class="fa-solid fa-briefcase text-purple-500 mr-2"></i> Real Internship Experience
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 8: Contact Section -->
-        <section id="contact" class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-                <div>
-                    <p class="text-xs font-mono text-accentCyan tracking-widest uppercase">// CONTACT INTERLINK GATEWAYS</p>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight dark:text-white text-slate-900 mt-1">Open Communications Terminal</h2>
-                </div>
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-accentCyan/30 to-transparent md:ml-8 hidden md:block"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <div class="lg:col-span-5 space-y-6 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <h3 class="text-2xl font-bold dark:text-white text-slate-900 tracking-tight">Let's build something predictive.</h3>
-                        <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed">
-                            Currently tracking early career acceleration opportunities across corporate analytics environments, engineering sectors, and data analyst openings.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4 font-mono text-sm">
-                        <a href="mailto:tejasp7196@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accentCyan/30 hover:bg-accentCyan/5 transition-all group">
-                            <div class="w-10 h-10 rounded-lg bg-accentCyan/10 text-accentCyan flex items-center justify-center text-base">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] dark:text-slate-500 text-slate-400 block uppercase">Routing Mailbox</span>
-                                <span class="dark:text-slate-200 text-slate-800 group-hover:text-accentCyan transition-colors">tejasp7196@gmail.com</span>
-                            </div>
-                        </a>
-
-                        <a href="tel:+918767952569" class="flex items-center gap-4 p-4 rounded-xl bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accentBlue/30 hover:bg-accentBlue/5 transition-all group">
-                            <div class="w-10 h-10 rounded-lg bg-accentBlue/10 text-accentBlue flex items-center justify-center text-base">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] dark:text-slate-500 text-slate-400 block uppercase">Voice Network</span>
-                                <span class="dark:text-slate-200 text-slate-800 group-hover:text-accentBlue transition-colors">+91 8767952569</span>
-                            </div>
-                        </a>
-
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accentBlue/30 hover:bg-accentBlue/5 transition-all group">
-                            <div class="w-10 h-10 rounded-lg bg-accentBlue/10 text-accentBlue flex items-center justify-center text-base">
-                                <i class="fa-solid fa-map-location-dot"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] dark:text-slate-500 text-slate-400 block uppercase">Base Coordinates</span>
-                                <span class="dark:text-slate-200 text-slate-800 group-hover:text-accentBlue transition-colors">Dhule, Maharashtra, India</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-                        <a href="https://www.linkedin.com/in/tejas-pawar-30b854367/" target="_blank" class="px-4 py-2.5 rounded-lg bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-accentCyan/50 dark:text-slate-300 text-slate-700 hover:text-accentCyan flex items-center gap-2 font-mono text-xs transition-all">
-                            <i class="fa-brands fa-linkedin text-sm"></i> LinkedIn Node
-                        </a>
-                        <a href="https://github.com/Tejas-Pawar09" target="_blank" class="px-4 py-2.5 rounded-lg bg-black/5 dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-white/40 dark:text-slate-300 text-slate-700 dark:hover:text-white flex items-center gap-2 font-mono text-xs transition-all">
-                            <i class="fa-brands fa-github text-sm"></i> GitHub Node
-                        </a>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 glass-panel rounded-2xl p-6 md:p-8 border dark:border-slate-800/50">
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message buffering completed successfully.');">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="space-y-2">
-                                <label class="text-xs font-mono dark:text-slate-400 text-slate-500 uppercase block">Sender Identification</label>
-                                <input type="text" placeholder="e.g., Recruiter / Manager" class="w-full dark:bg-slate-950 bg-white border dark:border-slate-800 border-slate-200 rounded-lg px-4 py-3 dark:text-slate-200 text-slate-800 focus:outline-none focus:border-accentCyan/70 transition-all text-sm" required />
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-mono dark:text-slate-400 text-slate-500 uppercase block">Return Route (Email)</label>
-                                <input type="email" placeholder="name@organization.com" class="w-full dark:bg-slate-950 bg-white border dark:border-slate-800 border-slate-200 rounded-lg px-4 py-3 dark:text-slate-200 text-slate-800 focus:outline-none focus:border-accentCyan/70 transition-all text-sm" required />
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-mono dark:text-slate-400 text-slate-500 uppercase block">Transmission Subject Vector</label>
-                            <input type="text" placeholder="Data Analyst Opening Opportunities" class="w-full dark:bg-slate-950 bg-white border dark:border-slate-800 border-slate-200 rounded-lg px-4 py-3 dark:text-slate-200 text-slate-800 focus:outline-none focus:border-accentCyan/70 transition-all text-sm" required />
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-mono dark:text-slate-400 text-slate-500 uppercase block">Message Payload Content</label>
-                            <textarea rows="4" placeholder="Input parameters of textual proposal strings..." class="w-full dark:bg-slate-950 bg-white border dark:border-slate-800 border-slate-200 rounded-lg px-4 py-3 dark:text-slate-200 text-slate-800 focus:outline-none focus:border-accentCyan/70 transition-all text-sm resize-none" required></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-accentCyan to-accentBlue rounded-lg dark:text-slate-950 text-white font-bold uppercase text-xs shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2">
-                            Dispatch Message Transmission <i class="fa-solid fa-circle-arrow-right text-sm"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="border-t border-slate-200 dark:border-slate-800 py-12 px-6 dark:bg-slate-950 bg-slate-100 backdrop-blur-md relative z-10">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-slate-400">
-                <div class="text-center md:text-left">
-                    <p>&copy; 2026 TEJAS PAWAR. ALL REPOS OPERATIONAL.</p>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="hover:text-accentCyan transition-colors">TOP NODE <i class="fa-solid fa-arrow-up-long ml-1"></i></a>
-                </div>
-            </div>
-        </footer>
-
+  <!-- ABOUT -->
+  <section class="section wrap" id="about" aria-labelledby="about-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">About</span>
+        <h2 id="about-heading">The short version</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
     </div>
 
-    <!-- Analytical Logic Core Execution Script -->
-    <script>
-        // 1. Mouse Spotlight Tracker Logic
-        const mouseGlow = document.getElementById('mouse-glow');
-        window.addEventListener('mousemove', (e) => {
-            mouseGlow.style.left = e.clientX + 'px';
-            mouseGlow.style.top = e.clientY + 'px';
+    <div class="about-grid">
+      <div class="card about-bio">
+        <span class="card-label"><span class="dash" aria-hidden="true"></span>Summary</span>
+
+        <p class="about-hook">Most reporting problems aren't analysis problems. They're a column of dates stored four different ways.</p>
+
+        <p>I started where a lot of analysts do — inside other people's spreadsheets. As an MIS Executive I owned the daily, weekly and monthly reporting pack: pulling the raw exports, cleaning them, validating the numbers, and rebuilding the whole thing as templates so the next month took hours instead of days.</p>
+        <p>Before that, my internship at NexGen Analytix was the analytical half of the same job — exploratory analysis in Python, SQL against relational databases, and Power BI dashboards that gave the business side something to point at in a meeting.</p>
+        <p>What I'm after now is a team where the reporting is load-bearing: where someone actually decides something because of the dashboard. I'm comfortable being the person who asks what the number is for before building it.</p>
+
+        <ul class="about-meta">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Shindkheda, Dhule, Maharashtra, India
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+            Open to relocation
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-side">
+        <div class="side-block">
+          <span class="label">Education</span>
+          <h3>B.Sc. Computer Science</h3>
+          <p class="meta">Shri Shivaji Vidya Prasarak Sanstha (SSVPS College), Dhule<br>2022 – 2025 · <b>8.08 CGPA</b></p>
+        </div>
+        <div class="side-block">
+          <span class="label">Working languages</span>
+          <h3>English · Hindi · Marathi</h3>
+          <p class="meta">Comfortable running reviews and writing reporting notes in all three.</p>
+        </div>
+        <div class="side-block">
+          <span class="label">Looking for</span>
+          <h3>Data Analyst · MIS Executive</h3>
+          <p class="meta">Full-time or internship. On-site, hybrid or remote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section wrap" id="stack" aria-labelledby="stack-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Tech stack</span>
+        <h2 id="stack-heading">Tools I reach for</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="stack-grid">
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- code brackets + data flow -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 5.5 3 12l5.5 6.5"/><path d="M15.5 5.5 21 12l-5.5 6.5"/><path d="M13.6 4.4 10.4 19.6"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Core</span>
+        </div>
+        <h3>Python</h3>
+        <p>Pandas · NumPy · Matplotlib · Seaborn</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency"></div></div>
+          <span class="meter-value">85%</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- stacked database discs -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5.5" rx="7.5" ry="3"/>
+              <path d="M4.5 5.5v5c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-5"/>
+              <path d="M4.5 10.5v8c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-8"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Relational</span>
+        </div>
+        <h3>SQL</h3>
+        <p>MySQL · Joins · Window Functions</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="SQL proficiency"></div></div>
+          <span class="meter-value">90%</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- report panel with bars -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.75" y="3.75" width="18.5" height="14.5" rx="2.25"/>
+              <path d="M7 15V11"/><path d="M12 15V7.5"/><path d="M17 15v-2.5"/>
+              <path d="M9 21.5h6"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Analytics</span>
+        </div>
+        <h3>Power BI</h3>
+        <p>DAX · Data modeling</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Power BI proficiency"></div></div>
+          <span class="meter-value">80%</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- worksheet grid with an active cell -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3.75" width="18" height="16.5" rx="2.25"/>
+              <path d="M3 9h18"/><path d="M3 15h18"/><path d="M9.5 3.75v16.5"/><path d="M15.5 3.75v16.5"/>
+              <rect x="9.5" y="9" width="6" height="6" fill="currentColor" stroke="none" opacity="0.28"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Foundational</span>
+        </div>
+        <h3>Advanced Excel</h3>
+        <p>Pivot tables · VLOOKUP / XLOOKUP</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Excel proficiency"></div></div>
+          <span class="meter-value">85%</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- scatter points with a fitted trend line -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.5 3.5v15a2 2 0 0 0 2 2h15"/>
+              <path d="M7 17.5 20 6"/>
+              <circle cx="8.5" cy="14" r="1.35"/><circle cx="12.5" cy="12.5" r="1.35"/>
+              <circle cx="16" cy="8.5" r="1.35"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Method</span>
+        </div>
+        <h3>Exploratory Data Analysis</h3>
+        <p>Statistical trends &amp; inference</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="EDA proficiency"></div></div>
+          <span class="meter-value">80%</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head">
+          <span class="skill-badge" aria-hidden="true">
+            <!-- funnel: raw rows in, clean output down -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.5 4.5h17l-6.4 7.6v6.1l-4.2 2.3v-8.4L3.5 4.5Z"/>
+              <path d="M7 8.1h10"/>
+            </svg>
+          </span>
+          <span class="skill-tag">Prep</span>
+        </div>
+        <h3>Data Cleaning &amp; Viz</h3>
+        <p>Anomaly handling &amp; reporting</p>
+        <div class="meter">
+          <div class="meter-track"><div class="meter-fill" style="width:90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Data cleaning proficiency"></div></div>
+          <span class="meter-value">90%</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section wrap" id="experience" aria-labelledby="experience-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Experience</span>
+        <h2 id="experience-heading">Where I've worked</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      <span class="sec-meta">Aug 2025 → Present</span>
+    </div>
+
+    <div class="roles">
+      <article class="role">
+        <div class="role-when">
+          <b><time datetime="2026-08">Aug 2026</time> — Present</b>
+          Current role<br>Full-time
+          <span class="role-now"><span class="dot" aria-hidden="true"></span> Here now</span>
+        </div>
+        <div>
+          <h3>MIS Executive</h3>
+          <p class="role-org">NIDS Design Studio Pte Ltd</p>
+          <ul>
+            <li><span>Build and run automated Google Sheets and Apps Script reporting pipelines, so the numbers refresh themselves instead of being rebuilt by hand each cycle.</span></li>
+            <li><span>Maintain the internal dashboards the team reads for project status and operational load.</span></li>
+            <li><span>Design and manage the project tracking systems that keep every live job visible in one place.</span></li>
+            <li><span>Streamline the recurring reporting work — turning manual, repeated steps into scripts that run on their own.</span></li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Google Sheets</span><span class="chip">Apps Script</span><span class="chip">Automation</span>
+            <span class="chip">Dashboards</span><span class="chip">Project tracking</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role-when">
+          <b><time datetime="2025-12">Dec 2025</time> — Jun 2026</b>
+          Previous<br>Full-time
+        </div>
+        <div>
+          <h3>MIS Executive</h3>
+          <p class="role-org">Brainkings Solution</p>
+          <ul>
+            <li><span>Built and delivered the daily, weekly and monthly MIS reporting pack in advanced Excel.</span></li>
+            <li><span>Owned data cleaning and validation end to end, so the numbers leaving the team were the numbers.</span></li>
+            <li><span>Built dashboards on pivot tables, charts and lookup functions for the operations review.</span></li>
+            <li><span>Converted recurring reports into reusable formula-driven templates, cutting the manual work each cycle.</span></li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Advanced Excel</span><span class="chip">MIS reporting</span><span class="chip">Dashboards</span>
+            <span class="chip">Data validation</span><span class="chip">Template automation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="role">
+        <div class="role-when">
+          <b><time datetime="2025-08">Aug 2025</time> — Dec 2025</b>
+          Internship
+        </div>
+        <div>
+          <h3>Data Analyst Intern</h3>
+          <p class="role-org">NexGen Analytix</p>
+          <ul>
+            <li><span>Analysed real business datasets across Python, SQL, Excel and Power BI.</span></li>
+            <li><span>Ran the cleaning and exploratory analysis that set up each reporting question.</span></li>
+            <li><span>Wrote SQL against relational databases and tuned the queries that were slow.</span></li>
+            <li><span>Built interactive dashboards so non-technical teams could read the trend without asking for a pull.</span></li>
+            <li><span>Supported cross-functional reporting and the summaries that went up to the business side.</span></li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">Power BI</span>
+            <span class="chip">DAX</span><span class="chip">EDA</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section wrap" id="projects" aria-labelledby="projects-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Projects</span>
+        <h2 id="projects-heading">Things I've shipped</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+      <span class="sec-meta">Four · source on GitHub</span>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-kind">Application</span>
+          <span class="project-stack">Python · Streamlit · MySQL</span>
+        </div>
+        <div class="project-body">
+          <h3>User Management System</h3>
+          <p>A working sign-up and login app with a MySQL database behind it. Create, read, update and delete user records through a Streamlit interface, with validation on every form and a normalised schema underneath.</p>
+          <div class="facts">
+            <div><span>Interface</span>Streamlit</div>
+            <div><span>Operations</span>Full CRUD</div>
+          </div>
+        </div>
+        <div class="project-foot">
+          <span class="note">Relational schema</span>
+          <a class="repo" href="https://github.com/Tejas-Pawar09" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-kind">Application</span>
+          <span class="project-stack">Python · MySQL</span>
+        </div>
+        <div class="project-body">
+          <h3>Library Management System</h3>
+          <p>Issue-and-return tracking for a book catalogue. Add and edit titles, check what's on the shelf against what's out, and generate availability reports from the transaction history.</p>
+          <div class="facts">
+            <div><span>Core</span>CRUD engine</div>
+            <div><span>Checks</span>Live availability</div>
+          </div>
+        </div>
+        <div class="project-foot">
+          <span class="note">Report generation</span>
+          <a class="repo" href="https://github.com/Tejas-Pawar09/-Library-Management-System" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-kind">Dashboard</span>
+          <span class="project-stack">Advanced Excel</span>
+        </div>
+        <div class="project-body">
+          <h3>Blinkit Sales Analysis</h3>
+          <p>An Excel workbook that breaks quick-commerce sales down by outlet, product category and location tier. Slicer-driven filters on top of pivot tables, so the same sheet answers a category question and a regional one.</p>
+          <div class="facts">
+            <div><span>Filters</span>Slicer-driven</div>
+            <div><span>Measures</span>Sales KPIs</div>
+          </div>
+        </div>
+        <div class="project-foot">
+          <span class="note">Outlet-level view</span>
+          <a class="repo" href="https://github.com/Tejas-Pawar09/blinkit-excel-sales-analysis" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-kind">Dashboard</span>
+          <span class="project-stack">Power BI · DAX</span>
+        </div>
+        <div class="project-body">
+          <h3>Student Performance Analysis</h3>
+          <p>A Power BI report over academic results: division splits, topper cohorts and eligibility trends, driven by DAX measures and slicers that cross-filter the whole page at once.</p>
+          <div class="facts">
+            <div><span>Modelling</span>DAX measures</div>
+            <div><span>Interaction</span>Cross-filtering</div>
+          </div>
+        </div>
+        <div class="project-foot">
+          <span class="note">Placement eligibility</span>
+          <a class="repo" href="https://github.com/Tejas-Pawar09/student-performance-data-analytics" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section wrap" id="certifications" aria-labelledby="cert-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Certifications</span>
+        <h2 id="cert-heading">Credentials</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="card cert-card">
+      <div class="cert-info">
+        <div class="cert-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>
+        </div>
+        <div>
+          <h3>Data Analytics &amp; Data Science</h3>
+          <p>Ethan's Tech, Pune</p>
+        </div>
+      </div>
+      <div class="cert-actions">
+        <a class="btn btn-secondary" href="Data_Analytics_Certificate.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          View certificate
+        </a>
+        <span class="verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+          Verified
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY HIRE -->
+  <section class="section wrap" id="why-hire" aria-labelledby="why-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Core value</span>
+        <h2 id="why-heading">Why hire me</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9.5 3a4.5 4.5 0 0 0-4.5 4.5c0 2 1 3.3 2 4.3 1 1 1.5 1.7 1.5 3.2v1h6v-1c0-1.5.5-2.2 1.5-3.2 1-1 2-2.3 2-4.3A4.5 4.5 0 0 0 14.5 3"/><path d="M9.5 20h5"/></svg></div>
+        <h3>Analytical thinking</h3>
+        <p>Breaks down messy, real-world data into insights someone can act on.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M9 14l2-2 2 2 4-4"/></svg></div>
+        <h3>Dashboard creation</h3>
+        <p>Builds clear, cross-filtering reporting views people actually keep open.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></div>
+        <h3>SQL querying</h3>
+        <p>Writes clean, efficient queries against real relational schemas.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+        <h3>Problem solving</h3>
+        <p>Turns ambiguous requirements into a structured, repeatable process.</p>
+      </div>
+    </div>
+
+    <div class="proof-row">
+      <div class="proof-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>Data visualization</div>
+      <div class="proof-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5Z"/></svg>Fast learner</div>
+      <div class="proof-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg>Real internship experience</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section wrap" id="contact" aria-labelledby="contact-heading">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Contact</span>
+        <h2 id="contact-heading">Let's talk</h2>
+      </div>
+      <div class="section-rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <h3>Let's build something useful.</h3>
+        <p>Currently looking for early-career opportunities in analytics, reporting and data-focused engineering roles.</p>
+
+        <div class="contact-list">
+          <a href="mailto:tejasp7196@gmail.com">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span>
+            <span class="contact-text"><span class="label">Email</span><span class="value">tejasp7196@gmail.com</span></span>
+          </a>
+          <a href="tel:+918767952569">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 4 6a2 2 0 0 1 0-2Z"/></svg></span>
+            <span class="contact-text"><span class="label">Phone</span><span class="value">+91 87679 52569</span></span>
+          </a>
+          <div class="static-row">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span class="contact-text"><span class="label">Location</span><span class="value">Pune, Maharashtra, India</span></span>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/tejas-pawar-30b854367/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9Z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Tejas-Pawar09" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="card form-card">
+        <form id="contact-form" novalidate>
+          <div class="form-row two-col">
+            <div class="field">
+              <label for="senderName">Your name</label>
+              <input type="text" id="senderName" name="senderName" placeholder="e.g. Priya Sharma" autocomplete="name" required aria-required="true">
+            </div>
+            <div class="field">
+              <label for="senderEmail">Your email</label>
+              <input type="email" id="senderEmail" name="senderEmail" placeholder="name@company.com" autocomplete="email" required aria-required="true">
+            </div>
+          </div>
+          <div class="field">
+            <label for="emailSubject">Subject</label>
+            <input type="text" id="emailSubject" name="emailSubject" placeholder="Data Analyst opportunity" required aria-required="true">
+          </div>
+          <div class="field">
+            <label for="emailMessage">Message</label>
+            <textarea id="emailMessage" name="emailMessage" rows="4" placeholder="Tell me a bit about the role..." required aria-required="true"></textarea>
+          </div>
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="form-status" role="status" aria-live="polite" id="form-status"></p>
+
+          <button type="submit" class="btn btn-primary submit-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+            Open email draft
+          </button>
+          <p class="form-fallback">This opens a pre-filled draft in your email app — nothing is sent automatically. Prefer to write directly? <a href="mailto:tejasp7196@gmail.com">Email tejasp7196@gmail.com</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>&copy; <span id="year">2026</span> Tejas Pawar. All rights reserved.</p>
+    <a href="#top">
+      Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Apply persisted / system theme before other scripts run, guarded so a
+     failure here can never block the rest of the page. */
+  try{
+    var stored = localStorage.getItem('theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (systemDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  }catch(e){ /* localStorage unavailable — CSS media-query fallback still applies */ }
+
+  document.addEventListener('DOMContentLoaded', function(){
+
+    var reduceMotion = false;
+    try{
+      reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }catch(e){}
+
+    /* ---- Theme toggle ---- */
+    try{
+      var toggle = document.getElementById('theme-toggle');
+      if (toggle){
+        var syncToggle = function(){
+          var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          toggle.setAttribute('aria-pressed', String(isLight));
+          toggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        };
+        syncToggle();
+        toggle.addEventListener('click', function(){
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', next);
+          try{ localStorage.setItem('theme', next); }catch(e){}
+          syncToggle();
         });
+      }
+    }catch(e){ console.warn('Theme toggle unavailable:', e); }
 
-        // 2. Continuous Scroll Progress Trackers
-        const scrollBar = document.getElementById('scroll-progress');
-        window.addEventListener('scroll', () => {
-            const windowScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (windowScroll / height) * 100;
-            scrollBar.style.width = scrolled + '%';
+    /* ---- Smooth in-page scrolling. CSS scroll-behavior already handles this
+       in modern browsers; this is the fallback for the ones that don't, and it
+       keeps the URL hash in sync either way. ---- */
+    try{
+      var supportsCssSmooth = 'scrollBehavior' in document.documentElement.style;
+      document.querySelectorAll('a[href^="#"]').forEach(function(link){
+        link.addEventListener('click', function(evt){
+          var id = link.getAttribute('href');
+          if (!id || id === '#') return;
+          var target = document.querySelector(id);
+          if (!target) return;
+
+          evt.preventDefault();
+
+          if (supportsCssSmooth || reduceMotion){
+            target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+          } else {
+            var header = document.querySelector('.site-header');
+            var offset = (header ? header.offsetHeight : 0) + 20;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo(0, top);
+          }
+
+          if (history.replaceState){ history.replaceState(null, '', id); }
+          else { window.location.hash = id; }
+
+          /* Keep keyboard focus with the section that was just scrolled to. */
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
         });
+      });
+    }catch(e){ console.warn('Smooth scroll enhancement unavailable:', e); }
 
-        // 3. Mobile Header Slideout Triggers
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    /* ---- Scroll reveal. Classes are added by JS only, so without JS every
+       section renders normally instead of staying invisible. ---- */
+    try{
+      if (!reduceMotion && 'IntersectionObserver' in window){
+        var revealTargets = document.querySelectorAll(
+          '.section-head, .card, .side-block, .skill-card, .role, .project-card, .value-card, .proof-item, .contact-list, .social-row'
+        );
+        var observer = new IntersectionObserver(function(entries, obs){
+          entries.forEach(function(entry){
+            if (entry.isIntersecting){
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
-        // 4. Advanced High-Speed Typewriter Simulation Engine Strings Mapping
-        const stringsArray = ["Python • SQL • Power BI • Excel", "Data Analytics Engine", "Exploratory EDA Analysis"];
-        let stringIndex = 0, charIndex = 0, deleting = false;
-        const targetElement = document.getElementById('typewriter');
+        revealTargets.forEach(function(el, i){
+          el.classList.add('js-reveal');
+          el.style.transitionDelay = ((i % 4) * 70) + 'ms';
+          observer.observe(el);
+        });
+      }
+    }catch(e){ console.warn('Scroll reveal unavailable:', e); }
 
-        function processTypewriterLogic() {
-            const currentString = stringsArray[stringIndex];
-            if (!deleting) {
-                targetElement.textContent = currentString.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === currentString.length) { deleting = true; setTimeout(processTypewriterLogic, 1800); }
-                else { setTimeout(processTypewriterLogic, 65); }
+    /* ---- Rotating role line (typewriter). Static text already in markup
+       is the no-JS fallback, so a failure here just leaves that in place. ---- */
+    try{
+      var target = document.getElementById('typewriter');
+      if (target && !reduceMotion){
+        var strings = ['Python · SQL · Power BI · Excel', 'Data Analytics', 'Exploratory Data Analysis'];
+        var sIdx = 0, cIdx = 0, deleting = false;
+        (function tick(){
+          var current = strings[sIdx];
+          if (!deleting){
+            target.textContent = current.slice(0, cIdx + 1);
+            cIdx++;
+            if (cIdx === current.length){ deleting = true; setTimeout(tick, 1800); }
+            else { setTimeout(tick, 55); }
+          } else {
+            target.textContent = current.slice(0, cIdx - 1);
+            cIdx--;
+            if (cIdx === 0){ deleting = false; sIdx = (sIdx + 1) % strings.length; setTimeout(tick, 400); }
+            else { setTimeout(tick, 30); }
+          }
+        })();
+      }
+    }catch(e){ console.warn('Typewriter unavailable:', e); }
+
+    /* ---- Mobile menu: close after choosing a link (progressive enhancement
+       on top of the native <details> disclosure, which works without this). ---- */
+    try{
+      var mobileNav = document.querySelector('.mobile-nav');
+      if (mobileNav){
+        mobileNav.querySelectorAll('.mobile-panel a').forEach(function(a){
+          a.addEventListener('click', function(){ mobileNav.removeAttribute('open'); });
+        });
+      }
+    }catch(e){ console.warn('Mobile menu enhancement unavailable:', e); }
+
+    /* ---- Contact form: builds a mailto draft, never claims to send it. ---- */
+    try{
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('form-status');
+      if (form){
+        form.addEventListener('submit', function(evt){
+          evt.preventDefault();
+          var name = document.getElementById('senderName').value.trim();
+          var email = document.getElementById('senderEmail').value.trim();
+          var subject = document.getElementById('emailSubject').value.trim();
+          var message = document.getElementById('emailMessage').value.trim();
+
+          if (!name || !email || !subject || !message){
+            if (status){ status.textContent = 'Please fill in every field before sending.'; status.dataset.state = 'error'; }
+            return;
+          }
+
+          var body = 'Hi Tejas,\n\n' + message + '\n\nBest regards,\n' + name + '\n(Reply email: ' + email + ')';
+          var mailto = 'mailto:tejasp7196@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+          var win = window.open(mailto, '_blank', 'noopener,noreferrer');
+          if (status){
+            if (win){
+              status.textContent = 'Your email app should now show a pre-filled draft — review it and hit send there.';
+              status.dataset.state = 'ok';
             } else {
-                targetElement.textContent = currentString.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) { deleting = false; stringIndex = (stringIndex + 1) % stringsArray.length; setTimeout(processTypewriterLogic, 400); }
-                else { setTimeout(processTypewriterLogic, 35); }
+              window.location.href = mailto;
+              status.textContent = 'Opening your default email app with a pre-filled draft…';
+              status.dataset.state = 'ok';
             }
-        }
-        document.addEventListener('DOMContentLoaded', () => { processTypewriterLogic(); });
-
-        // 5. Dynamic Chart.js Execution Module Architecture
-        const ctx = document.getElementById('heroLiveChart').getContext('2d');
-        
-        function getChartColor() {
-            return document.documentElement.classList.contains('dark') ? '#94a3b8' : '#64748b';
-        }
-        
-        const telemetryChartInstance = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00'],
-                datasets: [
-                    {
-                        label: 'Insights Extracted',
-                        data: [42, 58, 49, 74, 82, 69, 91, 105],
-                        borderColor: '#06b6d4',
-                        backgroundColor: 'rgba(6, 182, 212, 0.05)',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true,
-                        pointBackgroundColor: '#06b6d4'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { labels: { color: getChartColor(), font: { family: 'JetBrains Mono', size: 10 } } } },
-                scales: {
-                    x: { grid: { display: false }, ticks: { color: getChartColor() } },
-                    y: { grid: { color: 'rgba(148, 163, 184, 0.08)' }, ticks: { color: getChartColor() } }
-                }
-            }
+          }
         });
+      }
+    }catch(e){ console.warn('Contact form unavailable:', e); }
 
-        // Continuous telemetry generation shifts mapping parameters
-        setInterval(() => {
-            if(telemetryChartInstance && telemetryChartInstance.data.datasets[0]) {
-                telemetryChartInstance.data.datasets[0].data.shift();
-                telemetryChartInstance.data.datasets[0].data.push(Math.floor(Math.random() * (115 - 65 + 1)) + 65);
-                telemetryChartInstance.update('none');
-            }
-        }, 3000);
+    /* ---- Footer year ---- */
+    try{
+      var yearEl = document.getElementById('year');
+      if (yearEl){ yearEl.textContent = String(new Date().getFullYear()); }
+    }catch(e){ /* static year already in markup */ }
 
-        // 6. Light/Dark Optimization Framework Switch Handler Logic & Storage System
-        const toggleBtn = document.getElementById('theme-toggle');
-        const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
-        const themeIcon = document.getElementById('theme-icon');
-        const themeIconMobile = document.getElementById('theme-icon-mobile');
-
-        // Sync initial UI icon state on load base state
-        function syncIcons() {
-            const isDark = document.documentElement.classList.contains('dark');
-            const iconClass = isDark ? 'fa-moon' : 'fa-sun';
-            themeIcon.className = `fa-solid ${iconClass}`;
-            themeIconMobile.className = `fa-solid ${iconClass}`;
-        }
-        syncIcons();
-
-        function toggleThemeMode() {
-            let isDark;
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                isDark = false;
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                isDark = true;
-            }
-            
-            const newIconClass = isDark ? 'fa-moon' : 'fa-sun';
-            themeIcon.className = `fa-solid ${newIconClass}`;
-            themeIconMobile.className = `fa-solid ${newIconClass}`;
-            
-            // Adjust visualization chart line typography dynamically for maximum readability
-            const newColor = isDark ? '#94a3b8' : '#64748b';
-            telemetryChartInstance.options.scales.x.ticks.color = newColor;
-            telemetryChartInstance.options.scales.y.ticks.color = newColor;
-            telemetryChartInstance.options.plugins.legend.labels.color = newColor;
-            telemetryChartInstance.update();
-        }
-
-        toggleBtn.addEventListener('click', toggleThemeMode);
-        toggleBtnMobile.addEventListener('click', toggleThemeMode);
-    </script>
+  });
+})();
+</script>
 </body>
 </html>
